@@ -138,15 +138,26 @@ function Index() {
     <main className="mx-auto w-full max-w-[42rem] px-6 pb-24 pt-20 sm:pt-28">
       {/* ---------- Intro ---------- */}
       <header>
-        <h1 className="font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
-          Aditya Goyal
-        </h1>
-        <p className="mt-3 font-mono text-sm text-muted-foreground">
-          Computer Science · Data Science · Mathematics
-        </p>
-        <p className="mt-1 font-mono text-sm text-muted-foreground">
-          University of Wisconsin–Madison
-        </p>
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <h1 className="font-serif text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
+              Aditya Goyal
+            </h1>
+            <p className="mt-3 font-mono text-sm text-muted-foreground">
+              Computer Science · Data Science · Mathematics
+            </p>
+            <p className="mt-1 font-mono text-sm text-muted-foreground">
+              University of Wisconsin–Madison
+            </p>
+          </div>
+
+          <div
+            className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full border border-border bg-muted font-serif text-2xl text-muted-foreground"
+            aria-label="Profile photo placeholder"
+          >
+            AG
+          </div>
+        </div>
 
         <p className="mt-8 text-base leading-relaxed text-foreground">
           I&rsquo;m interested in understanding and improving how machine
