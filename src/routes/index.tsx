@@ -136,6 +136,19 @@ function SectionHeading({ children }: { children: string }) {
 function Index() {
   return (
     <main className="mx-auto w-full max-w-[42rem] px-6 pb-24 pt-20 sm:pt-28">
+      {/* ---------- Top navigation ---------- */}
+      <nav className="sticky top-0 z-10 -mx-6 mb-12 border-b border-border bg-background px-6 py-3 sm:-mx-0 sm:px-0">
+        <ul className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-sm text-muted-foreground">
+          <li><a className="u-link" href="#news">News</a></li>
+          <li><a className="u-link" href="#projects">Projects</a></li>
+          <li><a className="u-link" href="#publications">Publications</a></li>
+          <li><a className="u-link" href="#experience">Experience</a></li>
+          <li><a className="u-link" href="#writing">Writing</a></li>
+          <li><a className="u-link" href="#teaching">Teaching</a></li>
+          <li><a className="u-link" href="#outside">Outside</a></li>
+        </ul>
+      </nav>
+
       {/* ---------- Intro ---------- */}
       <header>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
