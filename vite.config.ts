@@ -24,7 +24,8 @@ export default defineConfig({
       enabled: true,
       prerender: {
         enabled: true,
-        outputPath: "/",
+        // /index.html is emitted from this outputPath.
+        outputPath: "/index",
       },
     },
   },
