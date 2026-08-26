@@ -77,12 +77,12 @@ const projects = [
 
 const publications = [
   {
-    title: "Understanding Weight Symmetries in Deep Networks",
-    authors: "Aditya Goyal, et al.",
-    venue: "ICML 2026 · Weight Symmetries",
+    title: "WARP: Weight-Space Analysis for Recovering Training Data Portfolios",
+    authors: "Tzu-Heng Huang, Aditya Goyal, John Cooper, Frederic Sala",
+    venue: "ICML 2026 · Weight Symmetries Workshop",
     thumb: paperThumb,
     links: [
-      { label: "Paper", href: "#" },
+      { label: "Paper", href: "https://arxiv.org/abs/2607.01686" },
       { label: "Code", href: "#" },
       { label: "Poster", href: "#" },
       { label: "Media", href: "#" },
