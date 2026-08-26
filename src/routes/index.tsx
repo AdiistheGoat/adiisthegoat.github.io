@@ -165,7 +165,7 @@ function Index() {
           </div>
 
           <div
-            className="flex h-36 w-36 shrink-0 items-center justify-center rounded-full border border-border bg-muted font-serif text-3xl text-muted-foreground sm:h-40 sm:w-40 sm:text-4xl"
+            className="flex h-48 w-48 shrink-0 items-center justify-center rounded-full border border-border bg-muted font-serif text-5xl text-muted-foreground sm:h-56 sm:w-56 sm:text-6xl"
             aria-label="Profile photo placeholder"
           >
             AG
