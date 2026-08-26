@@ -16,8 +16,7 @@ export default defineConfig({
   },
   nitro: false,
   tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
+    // Keep the SSR entry wrapper for prerendering; the serverless worker build is disabled.
     server: { entry: "server" },
     // Prerender the homepage with full content for static hosting.
     prerender: {
