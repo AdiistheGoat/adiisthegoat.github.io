@@ -6,10 +6,21 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// GitHub Pages base path. For project sites (adityagoyal.github.io/repo-name/)
+// this is set in the GitHub Actions workflow. For user/org sites it stays "/".
+const basePath = process.env["BASE_PATH"] || "/";
+
 export default defineConfig({
+  vite: {
+    base: basePath,
+  },
+  nitro: false,
   tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
+    // Keep the SSR entry wrapper for prerendering; the serverless worker build is disabled.
     server: { entry: "server" },
+    // Prerender the homepage with full content for static hosting.
+    prerender: {
+      enabled: true,
+    },
   },
 });
