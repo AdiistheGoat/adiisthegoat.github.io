@@ -194,7 +194,7 @@ function Index() {
       </header>
 
       {/* ---------- News ---------- */}
-      <section id="news" className="mt-16 scroll-mt-16">
+      <section id="news" className="mt-12 scroll-mt-16 border-t border-border pt-12">
         <SectionHeading>News</SectionHeading>
         <ul className="mt-5 space-y-3">
           {news.map((item) => (
@@ -210,7 +210,7 @@ function Index() {
       </section>
 
       {/* ---------- Projects ---------- */}
-      <section id="projects" className="mt-16 scroll-mt-16">
+      <section id="projects" className="mt-12 scroll-mt-16 border-t border-border pt-12">
         <SectionHeading>Projects</SectionHeading>
         <ul className="mt-5 space-y-6">
           {projects.map((p) => (
@@ -229,7 +229,7 @@ function Index() {
       </section>
 
       {/* ---------- Publications ---------- */}
-      <section id="publications" className="mt-16 scroll-mt-16">
+      <section id="publications" className="mt-12 scroll-mt-16 border-t border-border pt-12">
         <SectionHeading>Publications</SectionHeading>
         <ul className="mt-5 space-y-8">
           {publications.map((pub) => (
@@ -260,7 +260,7 @@ function Index() {
       </section>
 
       {/* ---------- Experience ---------- */}
-      <section id="experience" className="mt-16 scroll-mt-16">
+      <section id="experience" className="mt-12 scroll-mt-16 border-t border-border pt-12">
         <SectionHeading>Experience</SectionHeading>
         <ul className="mt-5 space-y-8">
           {experience.map((e) => (
@@ -282,7 +282,7 @@ function Index() {
       </section>
 
       {/* ---------- Writing ---------- */}
-      <section id="writing" className="mt-16 scroll-mt-16">
+      <section id="writing" className="mt-12 scroll-mt-16 border-t border-border pt-12">
         <SectionHeading>Writing</SectionHeading>
         <ul className="mt-5 space-y-6">
           {writing.map((w) => (
@@ -305,7 +305,7 @@ function Index() {
       </section>
 
       {/* ---------- Teaching ---------- */}
-      <section id="teaching" className="mt-16 scroll-mt-16">
+      <section id="teaching" className="mt-12 scroll-mt-16 border-t border-border pt-12">
         <SectionHeading>Teaching</SectionHeading>
         <ul className="mt-5 space-y-5">
           {teaching.map((t) => (
@@ -320,7 +320,7 @@ function Index() {
       </section>
 
       {/* ---------- Outside ---------- */}
-      <section id="outside" className="mt-16 scroll-mt-16">
+      <section id="outside" className="mt-12 scroll-mt-16 border-t border-border pt-12">
         <SectionHeading>Outside Research</SectionHeading>
         <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
           When I&rsquo;m away from a computer, you&rsquo;ll usually find me
@@ -331,7 +331,7 @@ function Index() {
           <figure>
             <img
               src={scubaPhoto}
-              alt="Scuba diving above a reef, sunlight filtering through the water"
+              alt="Scuba photo placeholder"
               width={1024}
               height={768}
               loading="lazy"
@@ -352,7 +352,7 @@ function Index() {
           <figure>
             <img
               src={squashPhoto}
-              alt="Playing a forehand shot on a squash court"
+              alt="Squash photo placeholder"
               width={1024}
               height={768}
               loading="lazy"
