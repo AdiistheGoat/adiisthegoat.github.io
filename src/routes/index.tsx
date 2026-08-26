@@ -135,14 +135,11 @@ const teaching = [
 
 /* ------------------------------------------------------------------ */
 
-function SectionHeading({ index, children }: { index: string; children: string }) {
+function SectionHeading({ children }: { children: string }) {
   return (
-    <div className="flex items-baseline gap-4">
-      <span className="font-mono text-xs text-muted-foreground">{index}</span>
-      <h2 className="font-serif text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-        {children}
-      </h2>
-    </div>
+    <h2 className="font-serif text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+      {children}
+    </h2>
   );
 }
 
