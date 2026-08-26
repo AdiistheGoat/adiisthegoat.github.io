@@ -226,7 +226,7 @@ function Index() {
 
           {/* ---------- News ---------- */}
           <section id="news" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index="01">News</SectionHeading>
+            <SectionHeading>News</SectionHeading>
             <ul className="mt-7 space-y-3.5">
               {news.map((item) => (
                 <li key={item.date + item.text} className="flex gap-5 text-sm leading-relaxed">
@@ -242,7 +242,7 @@ function Index() {
 
           {/* ---------- Projects ---------- */}
           <section id="projects" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index="02">Projects</SectionHeading>
+            <SectionHeading>Projects</SectionHeading>
             <ul className="mt-7 grid gap-5 sm:grid-cols-2">
               {projects.map((p) => (
                 <li
@@ -267,7 +267,7 @@ function Index() {
 
           {/* ---------- Publications ---------- */}
           <section id="publications" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index="03">Publications</SectionHeading>
+            <SectionHeading>Publications</SectionHeading>
             <ul className="mt-7 space-y-6">
               {publications.map((pub) => (
                 <li
@@ -303,7 +303,7 @@ function Index() {
 
           {/* ---------- Experience ---------- */}
           <section id="experience" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index="04">Experience</SectionHeading>
+            <SectionHeading>Experience</SectionHeading>
             <ul className="mt-7 space-y-10">
               {experience.map((e) => (
                 <li key={e.org} className="flex gap-6">
@@ -327,7 +327,7 @@ function Index() {
 
           {/* ---------- Writing ---------- */}
           <section id="writing" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index="05">Writing</SectionHeading>
+            <SectionHeading>Writing</SectionHeading>
             <ul className="mt-7 space-y-7">
               {writing.map((w) => (
                 <li key={w.title}>
@@ -350,7 +350,7 @@ function Index() {
 
           {/* ---------- Teaching ---------- */}
           <section id="teaching" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index="06">Teaching</SectionHeading>
+            <SectionHeading>Teaching</SectionHeading>
             <ul className="mt-7 space-y-6">
               {teaching.map((t) => (
                 <li key={t.course}>
@@ -365,7 +365,7 @@ function Index() {
 
           {/* ---------- Outside ---------- */}
           <section id="outside" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index="07">Outside Research</SectionHeading>
+            <SectionHeading>Outside Research</SectionHeading>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
               When I&rsquo;m away from a computer, you&rsquo;ll usually find me
               playing squash or underwater.
