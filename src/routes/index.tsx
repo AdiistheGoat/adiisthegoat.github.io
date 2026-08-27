@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import scubaPhoto from "@/assets/scuba.jpg";
+import scubaTurtle from "@/assets/scuba-7059.jpg";
+import scubaSnake from "@/assets/scuba-7060.jpg";
+import scubaDiver from "@/assets/scuba-7061.jpg";
 import squashPhoto from "@/assets/squash.jpg";
 import paperThumb from "@/assets/paper-thumb.jpg";
 
@@ -11,13 +13,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Aditya Goyal — Computer Science, Data Science, and Mathematics at the University of Wisconsin–Madison. Researching how machine learning systems learn, reason, and operate efficiently.",
+          "Aditya Goyal — Computer Science and Data Science at the University of Wisconsin–Madison. Researching how machine learning systems learn, reason, and operate efficiently.",
       },
       { property: "og:title", content: "Aditya Goyal" },
       {
         property: "og:description",
         content:
-          "Computer Science · Data Science · Mathematics at UW–Madison. Understanding and improving how machine learning systems learn, reason, and operate efficiently.",
+          "Computer Science · Data Science at UW–Madison. Understanding and improving how machine learning systems learn, reason, and operate efficiently.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -30,11 +32,11 @@ export const Route = createFileRoute("/")({
 /*  Edit these — everything on the page reads from this config.        */
 /* ------------------------------------------------------------------ */
 const links = {
-  email: "mailto:agoyal@wisc.edu", // TODO: your email
-  cv: "#", // TODO: link to your resume PDF
-  scholar: "#", // TODO: Google Scholar
-  github: "#", // TODO: GitHub
-  linkedin: "#", // TODO: LinkedIn
+  email: "mailto:agoyal33@wisc.edu",
+  cv: "#", // no hosted CV yet
+  scholar: "#", // no Scholar URL on the resume
+  github: "https://github.com/AdiistheGoat",
+  linkedin: "https://www.linkedin.com/in/aditya-goyal",
 };
 
 const navItems = [
@@ -49,30 +51,24 @@ const navItems = [
 ];
 
 const news = [
-  { date: "Aug 2026", text: "Started working on symmetry-aware optimization for efficient fine-tuning." },
-  { date: "Jun 2026", text: "Presented our work at ICML, Seoul." },
-  { date: "Jun 2026", text: "Our paper on weight symmetries was accepted to ICML 2026." },
-  { date: "May 2026", text: "Joined Frizzle as a Software Engineering Intern for the summer." },
+  { date: "May 2026", text: "Joined Frizzle (YC S25) as a Software Engineering Intern." },
+  { date: "May 2026", text: "WARP accepted to the ICML 2026 Weight Symmetries Workshop." },
+  { date: "Nov 2025", text: "Joined Yin Li's lab to work on NICU mortality forecasting." },
+  { date: "Aug 2025", text: "Finished a Machine Learning internship at Freecharge." },
 ];
 
 const projects = [
   {
     n: "01",
-    title: "Short and exact",
-    desc: "A text shortener that compresses without losing meaning.",
-    href: "#",
+    title: "ShortNExact",
+    desc: "Rewrites text to an exact word count without losing meaning.",
+    href: "https://github.com/AdiistheGoat/ShortNExact",
   },
   {
     n: "02",
-    title: "Symmetry toolkit",
-    desc: "Utilities for probing and exploiting weight symmetries in deep networks.",
-    href: "#",
-  },
-  {
-    n: "03",
-    title: "Triage notes",
-    desc: "Small models for structured clinical note summarization.",
-    href: "#",
+    title: "LLM finetuning using LoRA",
+    desc: "LoRA fine-tune of FLAN-T5 for sentiment classification.",
+    href: "https://github.com/AdiistheGoat/fine_tuning_using_LORA",
   },
 ];
 
@@ -93,11 +89,18 @@ const publications = [
 
 const researchExperience = [
   {
-    org: "UW–Madison",
+    org: "Yin Li Lab",
+    year: "2025–present",
+    role: "ML Research Engineering Intern",
+    desc: "Mortality forecasting on sparse, irregular NICU recordings.",
+    reflection: "Sparse clinical data taught me that the missingness is part of the signal.",
+  },
+  {
+    org: "Sprocket Lab",
     year: "2025–26",
-    role: "Undergraduate Researcher",
-    desc: "Studying weight symmetries in neural networks and what they imply about optimization.",
-    reflection: "Research taught me that the interesting question is usually one level below the one you started with.",
+    role: "ML Research Engineering Intern",
+    desc: "Recovering fine-tuning data distributions from model weights.",
+    reflection: "The interesting question was usually one level below the one we started with.",
   },
 ];
 
@@ -106,35 +109,49 @@ const sweExperience = [
     org: "Frizzle",
     year: "2026",
     role: "Software Engineering Intern",
-    desc: "Worked on agentic workflows and evaluation systems for education.",
-    reflection: "Building AI for real users taught me that a model is only as good as the eval that grades it.",
+    desc: "Shipped AI rubric generation and eval pipelines for education.",
+    reflection: "A model is only as good as the eval that grades it.",
+  },
+  {
+    org: "Freecharge",
+    year: "2025",
+    role: "Machine Learning Intern",
+    desc: "Bedrock agents for spend analysis and document search.",
+    reflection: "Tool-using agents fail at the retrieval step before they fail at the model.",
+  },
+  {
+    org: "UW–Madison Physics",
+    year: "2024–25",
+    role: "Software Engineering Intern",
+    desc: "Trained and visualized MLPs on mathematical functions.",
+    reflection: "Vectorizing the experiment loop taught me more than the network did.",
   },
 ];
 
 const writing = [
   {
-    title: "Thoughts from ICML 2026",
-    desc: "What I learned from presenting my first research paper.",
-    meta: "Jun 2026 · 4 min",
-    href: "#",
+    title: "The magic of 1.58 bit LLMs",
+    desc: "Ternary-weight Transformers: adds instead of matmuls.",
+    meta: "Jan 2026 · LinkedIn",
+    href: "https://www.linkedin.com/pulse/magic-158-bit-llms-aditya-goyal--ihpkc/",
   },
   {
-    title: "Understanding weight symmetries, gently",
-    desc: "A short note on why neural networks have redundant structure.",
-    meta: "May 2026 · 6 min",
-    href: "#",
+    title: "Transformers from Scratch: the math, the shapes, and the intuition that finally clicked",
+    desc: "Shapes, masking, and why the last row matters.",
+    meta: "Dec 2025 · LinkedIn",
+    href: "https://www.linkedin.com/pulse/transformers-from-scratch-math-shapes-intuition-finally-goyal--8ydec/",
   },
   {
-    title: "Building evals that people trust",
-    desc: "LinkedIn · Apr 2026",
-    meta: "",
-    href: "#",
+    title: "Humans choose which pieces to put in the puzzle. AI places the pieces.",
+    desc: "Judgment picks the problem; the model places the pieces.",
+    meta: "Sep 2025 · LinkedIn",
+    href: "https://www.linkedin.com/pulse/humans-choose-which-pieces-put-puzzle-ai-places-aditya-goyal--h05wf/",
   },
 ];
 
 const teaching = [
-  { course: "CS 540 — Introduction to Artificial Intelligence", role: "Teaching Assistant", years: "2025–26" },
-  { course: "CS 300 — Programming II", role: "Teaching Assistant", years: "2024–26" },
+  { course: "CS 300 — Programming II", role: "Teaching Assistant", years: "2024–present" },
+  { course: "CS 540 — Introduction to Artificial Intelligence", role: "Teaching Assistant", years: "2024–25" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -202,7 +219,7 @@ function Index() {
               Aditya Goyal
             </h1>
             <p className="mt-3 font-mono text-sm leading-relaxed text-muted-foreground">
-              Computer Science · Data Science · Mathematics
+              Computer Science · Data Science
             </p>
             <p className="mt-1 font-mono text-sm text-muted-foreground">
               University of Wisconsin–Madison
@@ -248,9 +265,9 @@ function Index() {
               and evaluation, with applications including healthcare.
             </p>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Currently, I&rsquo;m a senior at UW–Madison researching weight
-              symmetries in neural networks, and spending the summer building
-              agentic evaluation systems at Frizzle.
+              Currently, I&rsquo;m a senior at UW–Madison working on NICU
+              mortality forecasting in Yin Li&rsquo;s lab, and building agentic
+              evaluation systems at Frizzle.
             </p>
           </header>
 
@@ -395,18 +412,38 @@ function Index() {
 
             <div className="mt-8 grid gap-8 sm:grid-cols-2">
               <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
-                <img
-                  src={scubaPhoto}
-                  alt="Scuba photo placeholder"
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                  className="w-full rounded-sm border border-border object-cover"
-                />
+                <div className="grid gap-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    <img
+                      src={scubaTurtle}
+                      alt="Green sea turtle on a sandy reef"
+                      width={1284}
+                      height={1650}
+                      loading="lazy"
+                      className="aspect-[3/4] w-full rounded-sm border border-border object-cover"
+                    />
+                    <img
+                      src={scubaDiver}
+                      alt="Scuba diving, seated mid-water"
+                      width={1284}
+                      height={2224}
+                      loading="lazy"
+                      className="aspect-[3/4] w-full rounded-sm border border-border object-cover"
+                    />
+                  </div>
+                  <img
+                    src={scubaSnake}
+                    alt="Banded sea krait above the sand"
+                    width={1283}
+                    height={705}
+                    loading="lazy"
+                    className="aspect-video w-full rounded-sm border border-border object-cover"
+                  />
+                </div>
                 <figcaption className="mt-4 border-t border-border pt-4">
                   <p className="font-serif text-lg font-medium text-foreground">Scuba Diving</p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Open Water diver, working my way toward Advanced and Rescue.
+                    PADI Open Water diver, working my way toward Advanced and Rescue.
                     I love scuba because it&rsquo;s one of the few places you can
                     see wildlife truly in the wild — even if that means being two
                     metres from a sea snake. Only complaint: the water&rsquo;s
@@ -418,11 +455,11 @@ function Index() {
               <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
                 <img
                   src={squashPhoto}
-                  alt="Squash photo placeholder"
-                  width={1024}
-                  height={768}
+                  alt="Playing squash"
+                  width={1284}
+                  height={1664}
                   loading="lazy"
-                  className="w-full rounded-sm border border-border object-cover"
+                  className="aspect-[3/4] w-full rounded-sm border border-border object-cover"
                 />
                 <figcaption className="mt-4 border-t border-border pt-4">
                   <p className="font-serif text-lg font-medium text-foreground">Squash</p>
