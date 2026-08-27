@@ -41,7 +41,8 @@ const navItems = [
   { label: "News", href: "#news" },
   { label: "Projects", href: "#projects" },
   { label: "Publications", href: "#publications" },
-  { label: "Experience", href: "#experience" },
+  { label: "Research", href: "#research" },
+  { label: "SWE", href: "#swe" },
   { label: "Writing", href: "#writing" },
   { label: "Teaching", href: "#teaching" },
   { label: "Outside", href: "#outside" },
@@ -90,20 +91,23 @@ const publications = [
   },
 ];
 
-const experience = [
-  {
-    org: "Frizzle",
-    year: "2026",
-    role: "Software Engineering Intern",
-    desc: "Worked on agentic workflows and evaluation systems for education.",
-    reflection: "Building AI for real users taught me that a model is only as good as the eval that grades it.",
-  },
+const researchExperience = [
   {
     org: "UW–Madison",
     year: "2025–26",
     role: "Undergraduate Researcher",
     desc: "Studying weight symmetries in neural networks and what they imply about optimization.",
     reflection: "Research taught me that the interesting question is usually one level below the one you started with.",
+  },
+];
+
+const sweExperience = [
+  {
+    org: "Frizzle",
+    year: "2026",
+    role: "Software Engineering Intern",
+    desc: "Worked on agentic workflows and evaluation systems for education.",
+    reflection: "Building AI for real users taught me that a model is only as good as the eval that grades it.",
   },
 ];
 
@@ -301,11 +305,35 @@ function Index() {
             </ul>
           </section>
 
-          {/* ---------- Experience ---------- */}
-          <section id="experience" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading>Experience</SectionHeading>
+          {/* ---------- Research Experience ---------- */}
+          <section id="research" className="scroll-mt-20 border-t border-border py-14">
+            <SectionHeading>Research Experience</SectionHeading>
             <ul className="mt-7 space-y-10">
-              {experience.map((e) => (
+              {researchExperience.map((e) => (
+                <li key={e.org} className="flex gap-6">
+                  <span className="w-16 shrink-0 pt-0.5 font-mono text-sm text-muted-foreground">
+                    {e.year}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-mono text-sm font-medium uppercase tracking-wide text-foreground">
+                      {e.org}
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">{e.role}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground">{e.desc}</p>
+                    <p className="mt-2 border-l-2 border-border pl-4 font-serif text-sm italic leading-relaxed text-muted-foreground">
+                      {e.reflection}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* ---------- SWE Experience ---------- */}
+          <section id="swe" className="scroll-mt-20 border-t border-border py-14">
+            <SectionHeading>SWE Experience</SectionHeading>
+            <ul className="mt-7 space-y-10">
+              {sweExperience.map((e) => (
                 <li key={e.org} className="flex gap-6">
                   <span className="w-16 shrink-0 pt-0.5 font-mono text-sm text-muted-foreground">
                     {e.year}
