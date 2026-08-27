@@ -139,18 +139,11 @@ const teaching = [
 
 /* ------------------------------------------------------------------ */
 
-function SectionHeading({ children, index }: { children: string; index?: number }) {
+function SectionHeading({ children }: { children: string }) {
   return (
-    <div className="space-y-2">
-      {index != null && (
-        <span className="block font-mono text-xs uppercase tracking-[0.15em] text-primary/80">
-          {String(index).padStart(2, "0")} — {children}
-        </span>
-      )}
-      <h2 className="font-serif text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-        {children}
-      </h2>
-    </div>
+    <h2 className="font-serif text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+      {children}
+    </h2>
   );
 }
 
@@ -259,12 +252,11 @@ function Index() {
               symmetries in neural networks, and spending the summer building
               agentic evaluation systems at Frizzle.
             </p>
-            <div className="mt-10 h-px w-20 bg-primary" />
           </header>
 
           {/* ---------- News ---------- */}
           <section id="news" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
-            <SectionHeading index={1}>News</SectionHeading>
+            <SectionHeading>News</SectionHeading>
             <ul className="mt-7 space-y-3.5">
               {news.map((item) => (
                 <li key={item.date + item.text} className="flex gap-5 text-sm leading-relaxed">
@@ -280,7 +272,7 @@ function Index() {
 
           {/* ---------- Projects ---------- */}
           <section id="projects" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index={2}>Projects</SectionHeading>
+            <SectionHeading>Projects</SectionHeading>
             <ul className="mt-7 grid gap-5 sm:grid-cols-2">
               {projects.map((p) => (
                 <li
@@ -305,7 +297,7 @@ function Index() {
 
           {/* ---------- Publications ---------- */}
           <section id="publications" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
-            <SectionHeading index={3}>Publications</SectionHeading>
+            <SectionHeading>Publications</SectionHeading>
             <ul className="mt-7 space-y-6">
               {publications.map((pub) => (
                 <li
@@ -345,19 +337,19 @@ function Index() {
 
           {/* ---------- Research Experience ---------- */}
           <section id="research" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index={4}>Research Experience</SectionHeading>
+            <SectionHeading>Research Experience</SectionHeading>
             <ExperienceList items={researchExperience} />
           </section>
 
           {/* ---------- SWE Experience ---------- */}
           <section id="swe" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
-            <SectionHeading index={5}>SWE Experience</SectionHeading>
+            <SectionHeading>SWE Experience</SectionHeading>
             <ExperienceList items={sweExperience} />
           </section>
 
           {/* ---------- Writing ---------- */}
           <section id="writing" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index={6}>Writing</SectionHeading>
+            <SectionHeading>Writing</SectionHeading>
             <ul className="mt-7 space-y-2">
               {writing.map((w) => (
                 <li key={w.title} className="rounded-md p-3 transition-colors hover:bg-muted/30">
@@ -380,7 +372,7 @@ function Index() {
 
           {/* ---------- Teaching ---------- */}
           <section id="teaching" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
-            <SectionHeading index={7}>Teaching</SectionHeading>
+            <SectionHeading>Teaching</SectionHeading>
             <ul className="mt-7 space-y-2">
               {teaching.map((t) => (
                 <li key={t.course} className="flex flex-col justify-between gap-1 rounded-md p-3 transition-colors hover:bg-muted/30 sm:flex-row sm:items-center">
@@ -395,7 +387,7 @@ function Index() {
 
           {/* ---------- Outside ---------- */}
           <section id="outside" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading index={8}>Outside Research</SectionHeading>
+            <SectionHeading>Outside Research</SectionHeading>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
               When I&rsquo;m away from a computer, you&rsquo;ll usually find me
               playing squash or underwater.
