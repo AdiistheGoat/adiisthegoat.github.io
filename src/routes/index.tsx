@@ -139,11 +139,44 @@ const teaching = [
 
 /* ------------------------------------------------------------------ */
 
-function SectionHeading({ children }: { children: string }) {
+function SectionHeading({ children, index }: { children: string; index?: number }) {
   return (
-    <h2 className="font-serif text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-      {children}
-    </h2>
+    <div className="space-y-2">
+      {index != null && (
+        <span className="block font-mono text-xs uppercase tracking-[0.15em] text-primary/80">
+          {String(index).padStart(2, "0")} — {children}
+        </span>
+      )}
+      <h2 className="font-serif text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+        {children}
+      </h2>
+    </div>
+  );
+}
+
+function ExperienceList({ items }: { items: typeof researchExperience }) {
+  return (
+    <div className="relative mt-7 space-y-10 pl-1">
+      <div className="absolute left-[6px] top-2 bottom-2 w-px bg-border" />
+      {items.map((e) => (
+        <div key={e.org} className="relative pl-8">
+          <span className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-primary bg-background" />
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <p className="font-mono text-sm font-medium uppercase tracking-wide text-foreground">
+                {e.org}
+              </p>
+              <span className="font-mono text-sm text-muted-foreground">{e.year}</span>
+            </div>
+            <p className="mt-1 text-sm text-muted-foreground">{e.role}</p>
+            <p className="mt-2 text-sm leading-relaxed text-foreground">{e.desc}</p>
+            <p className="mt-3 border-l-2 border-primary/30 pl-4 font-serif text-sm italic leading-relaxed text-muted-foreground">
+              {e.reflection}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -151,7 +184,7 @@ function Index() {
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pb-24 pt-10 sm:px-10 sm:pt-14">
       {/* ---------- Mobile top bar ---------- */}
-      <nav className="sticky top-0 z-10 -mx-6 mb-10 border-b border-border bg-background px-6 py-3 lg:hidden sm:-mx-10 sm:px-10">
+      <nav className="sticky top-0 z-10 -mx-6 mb-10 border-b border-border bg-background/95 px-6 py-3 backdrop-blur-sm lg:hidden sm:-mx-10 sm:px-10">
         <ul className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-sm text-muted-foreground">
           {navItems.map((item) => (
             <li key={item.href}>
@@ -213,7 +246,7 @@ function Index() {
         <div className="min-w-0">
           {/* ---------- Intro ---------- */}
           <header className="pb-14">
-            <p className="font-serif text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-[1.75rem]">
+            <p className="font-serif text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl">
               I&rsquo;m interested in understanding and improving how machine
               learning systems learn, reason, and operate efficiently.
             </p>
@@ -226,15 +259,16 @@ function Index() {
               symmetries in neural networks, and spending the summer building
               agentic evaluation systems at Frizzle.
             </p>
+            <div className="mt-10 h-px w-20 bg-primary" />
           </header>
 
           {/* ---------- News ---------- */}
-          <section id="news" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading>News</SectionHeading>
+          <section id="news" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
+            <SectionHeading index={1}>News</SectionHeading>
             <ul className="mt-7 space-y-3.5">
               {news.map((item) => (
                 <li key={item.date + item.text} className="flex gap-5 text-sm leading-relaxed">
-                  <span className="w-20 shrink-0 font-mono text-muted-foreground">{item.date}</span>
+                  <span className="w-20 shrink-0 font-mono text-primary/80">{item.date}</span>
                   <span className="text-foreground">{item.text}</span>
                 </li>
               ))}
@@ -246,20 +280,20 @@ function Index() {
 
           {/* ---------- Projects ---------- */}
           <section id="projects" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading>Projects</SectionHeading>
+            <SectionHeading index={2}>Projects</SectionHeading>
             <ul className="mt-7 grid gap-5 sm:grid-cols-2">
               {projects.map((p) => (
                 <li
                   key={p.n}
-                  className="group rounded-sm border border-border p-5 transition-colors hover:border-primary"
+                  className="group rounded-md border border-border bg-card p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:shadow"
                 >
                   <div className="flex items-baseline justify-between">
-                    <span className="font-mono text-xs text-muted-foreground">{p.n}</span>
+                    <span className="font-mono text-sm text-primary/80">{p.n}</span>
                     <span className="font-mono text-sm text-muted-foreground transition-colors group-hover:text-primary">
                       ↗
                     </span>
                   </div>
-                  <p className="mt-3 text-sm font-medium text-foreground">{p.title}</p>
+                  <p className="mt-3 text-base font-medium text-foreground">{p.title}</p>
                   <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
                   <a href={p.href} className="u-link mt-3 inline-block font-mono text-sm">
                     Code ↗
@@ -270,13 +304,13 @@ function Index() {
           </section>
 
           {/* ---------- Publications ---------- */}
-          <section id="publications" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading>Publications</SectionHeading>
+          <section id="publications" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
+            <SectionHeading index={3}>Publications</SectionHeading>
             <ul className="mt-7 space-y-6">
               {publications.map((pub) => (
                 <li
                   key={pub.title}
-                  className="flex gap-5 rounded-sm border border-border p-5"
+                  className="flex gap-5 rounded-md border border-border bg-card p-5 shadow-sm"
                 >
                   <img
                     src={pub.thumb}
@@ -284,17 +318,21 @@ function Index() {
                     width={640}
                     height={640}
                     loading="lazy"
-                    className="h-24 w-24 shrink-0 rounded-sm border border-border object-cover"
+                    className="h-28 w-28 shrink-0 rounded-md border border-border object-cover shadow-sm"
                   />
                   <div className="min-w-0">
                     <p className="font-serif text-lg font-medium leading-snug text-foreground">
                       {pub.title}
                     </p>
                     <p className="mt-1 text-sm text-muted-foreground">{pub.authors}</p>
-                    <p className="mt-1 font-mono text-xs text-muted-foreground">{pub.venue}</p>
-                    <p className="mt-3 flex flex-wrap gap-x-4 font-mono text-sm">
+                    <p className="mt-1 font-mono text-xs text-primary/80">{pub.venue}</p>
+                    <p className="mt-3 flex flex-wrap gap-2">
                       {pub.links.map((l) => (
-                        <a key={l.label} href={l.href} className="u-link">
+                        <a
+                          key={l.label}
+                          href={l.href}
+                          className="rounded-full border border-border px-3 py-1 font-mono text-xs transition-colors hover:border-primary hover:text-primary"
+                        >
                           {l.label} ↗
                         </a>
                       ))}
@@ -307,58 +345,22 @@ function Index() {
 
           {/* ---------- Research Experience ---------- */}
           <section id="research" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading>Research Experience</SectionHeading>
-            <ul className="mt-7 space-y-10">
-              {researchExperience.map((e) => (
-                <li key={e.org} className="flex gap-6">
-                  <span className="w-16 shrink-0 pt-0.5 font-mono text-sm text-muted-foreground">
-                    {e.year}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-mono text-sm font-medium uppercase tracking-wide text-foreground">
-                      {e.org}
-                    </p>
-                    <p className="mt-1 text-sm text-muted-foreground">{e.role}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground">{e.desc}</p>
-                    <p className="mt-2 border-l-2 border-border pl-4 font-serif text-sm italic leading-relaxed text-muted-foreground">
-                      {e.reflection}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <SectionHeading index={4}>Research Experience</SectionHeading>
+            <ExperienceList items={researchExperience} />
           </section>
 
           {/* ---------- SWE Experience ---------- */}
-          <section id="swe" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading>SWE Experience</SectionHeading>
-            <ul className="mt-7 space-y-10">
-              {sweExperience.map((e) => (
-                <li key={e.org} className="flex gap-6">
-                  <span className="w-16 shrink-0 pt-0.5 font-mono text-sm text-muted-foreground">
-                    {e.year}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-mono text-sm font-medium uppercase tracking-wide text-foreground">
-                      {e.org}
-                    </p>
-                    <p className="mt-1 text-sm text-muted-foreground">{e.role}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground">{e.desc}</p>
-                    <p className="mt-2 border-l-2 border-border pl-4 font-serif text-sm italic leading-relaxed text-muted-foreground">
-                      {e.reflection}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <section id="swe" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
+            <SectionHeading index={5}>SWE Experience</SectionHeading>
+            <ExperienceList items={sweExperience} />
           </section>
 
           {/* ---------- Writing ---------- */}
           <section id="writing" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading>Writing</SectionHeading>
-            <ul className="mt-7 space-y-7">
+            <SectionHeading index={6}>Writing</SectionHeading>
+            <ul className="mt-7 space-y-2">
               {writing.map((w) => (
-                <li key={w.title}>
+                <li key={w.title} className="rounded-md p-3 transition-colors hover:bg-muted/30">
                   <div className="flex items-baseline justify-between gap-4">
                     <a href={w.href} className="u-link font-serif text-lg font-medium text-foreground">
                       {w.title}
@@ -369,7 +371,7 @@ function Index() {
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{w.desc}</p>
                   )}
                   {w.meta && (
-                    <p className="mt-1.5 font-mono text-xs text-muted-foreground">{w.meta}</p>
+                    <p className="mt-1.5 font-mono text-xs text-primary/80">{w.meta}</p>
                   )}
                 </li>
               ))}
@@ -377,13 +379,13 @@ function Index() {
           </section>
 
           {/* ---------- Teaching ---------- */}
-          <section id="teaching" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading>Teaching</SectionHeading>
-            <ul className="mt-7 space-y-6">
+          <section id="teaching" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
+            <SectionHeading index={7}>Teaching</SectionHeading>
+            <ul className="mt-7 space-y-2">
               {teaching.map((t) => (
-                <li key={t.course}>
+                <li key={t.course} className="flex flex-col justify-between gap-1 rounded-md p-3 transition-colors hover:bg-muted/30 sm:flex-row sm:items-center">
                   <p className="text-sm font-medium text-foreground">{t.course}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     {t.role} · {t.years}
                   </p>
                 </li>
@@ -393,14 +395,14 @@ function Index() {
 
           {/* ---------- Outside ---------- */}
           <section id="outside" className="scroll-mt-20 border-t border-border py-14">
-            <SectionHeading>Outside Research</SectionHeading>
+            <SectionHeading index={8}>Outside Research</SectionHeading>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
               When I&rsquo;m away from a computer, you&rsquo;ll usually find me
               playing squash or underwater.
             </p>
 
             <div className="mt-8 grid gap-8 sm:grid-cols-2">
-              <figure>
+              <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
                 <img
                   src={scubaPhoto}
                   alt="Scuba photo placeholder"
@@ -409,7 +411,7 @@ function Index() {
                   loading="lazy"
                   className="w-full rounded-sm border border-border object-cover"
                 />
-                <figcaption className="mt-4">
+                <figcaption className="mt-4 border-t border-border pt-4">
                   <p className="font-serif text-lg font-medium text-foreground">Scuba Diving</p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     Open Water diver, working my way toward Advanced and Rescue.
@@ -421,7 +423,7 @@ function Index() {
                 </figcaption>
               </figure>
 
-              <figure>
+              <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
                 <img
                   src={squashPhoto}
                   alt="Squash photo placeholder"
@@ -430,7 +432,7 @@ function Index() {
                   loading="lazy"
                   className="w-full rounded-sm border border-border object-cover"
                 />
-                <figcaption className="mt-4">
+                <figcaption className="mt-4 border-t border-border pt-4">
                   <p className="font-serif text-lg font-medium text-foreground">Squash</p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     Not the vegetable. The actual sport. There isn&rsquo;t a game
