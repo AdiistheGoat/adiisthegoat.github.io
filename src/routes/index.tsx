@@ -252,7 +252,6 @@ function Index() {
               symmetries in neural networks, and spending the summer building
               agentic evaluation systems at Frizzle.
             </p>
-            <div className="mt-10 h-px w-20 bg-primary" />
           </header>
 
           {/* ---------- News ---------- */}
