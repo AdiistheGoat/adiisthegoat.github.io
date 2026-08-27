@@ -139,18 +139,11 @@ const teaching = [
 
 /* ------------------------------------------------------------------ */
 
-function SectionHeading({ children, index }: { children: string; index?: number }) {
+function SectionHeading({ children }: { children: string }) {
   return (
-    <div className="space-y-2">
-      {index != null && (
-        <span className="block font-mono text-xs uppercase tracking-[0.15em] text-primary/80">
-          {String(index).padStart(2, "0")} — {children}
-        </span>
-      )}
-      <h2 className="font-serif text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-        {children}
-      </h2>
-    </div>
+    <h2 className="font-serif text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+      {children}
+    </h2>
   );
 }
 
