@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
 /* ------------------------------------------------------------------ */
 const links = {
   email: "mailto:agoyal33@wisc.edu",
-  cv: "https://github.com/AdiistheGoat/adiisthegoat.github.io/src/assets/Resume.pdf",
+  cv: "../assets/Resume.pdf",
   scholar: "https://scholar.google.com/citations?user=OcCyDyEAAAAJ&hl=en",
   github: "https://github.com/AdiistheGoat",
   linkedin: "https://www.linkedin.com/in/aditya-goyal-aa0288213/",
@@ -296,6 +296,7 @@ function Index() {
               <a className="u-link" href={links.scholar} {...newTabProps(links.scholar)}>Scholar</a>
               <a className="u-link" href={links.github} {...newTabProps(links.github)}>GitHub</a>
               <a className="u-link" href={links.linkedin} {...newTabProps(links.linkedin)}>LinkedIn</a>
+              <a className="u-link" href={links.X} {...newTabProps(links.X)}>X</a>
             </nav>
 
             {/* Section navigation — desktop rail only */}
