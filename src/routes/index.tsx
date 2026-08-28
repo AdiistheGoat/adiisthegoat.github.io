@@ -39,10 +39,11 @@ export const Route = createFileRoute("/")({
 /* ------------------------------------------------------------------ */
 const links = {
   email: "mailto:agoyal33@wisc.edu",
-  cv: "#", // no hosted CV yet
+  cv: "https://github.com/AdiistheGoat/adiisthegoat.github.io/src/assets/Resume.pdf",
   scholar: "https://scholar.google.com/citations?user=OcCyDyEAAAAJ&hl=en",
   github: "https://github.com/AdiistheGoat",
-  linkedin: "https://www.linkedin.com/in/aditya-goyal",
+  linkedin: "https://www.linkedin.com/in/aditya-goyal-aa0288213/",
+  X: "https://x.com/adigoyal0807"
 };
 
 const navItems = [
