@@ -46,6 +46,7 @@ const links = {
 };
 
 const navItems = [
+  { label: "About", href: "#about" },
   { label: "News", href: "#news" },
   { label: "Projects", href: "#projects" },
   { label: "Publications", href: "#publications" },
@@ -317,9 +318,10 @@ function Index() {
 
         {/* ---------- Content column ---------- */}
         <div className="min-w-0">
-          {/* ---------- Intro ---------- */}
-          <header className="pb-14">
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+          {/* ---------- About ---------- */}
+          <section id="about" className="scroll-mt-20 pb-14">
+            <SectionHeading>About Me</SectionHeading>
+            <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground">
               Greetings! I am an undergraduate at UW–Madison working on Health AI and
               data-centric AI. I am fortunate to be advised by Prof. Yin Li and
               Prof. Fred Sala. I have also gained valuable AI and ML engineering
@@ -331,7 +333,7 @@ function Index() {
               Currently, I am working on NICU mortality forecasting using Chronos, video understanding for neonatal laryngoscopy, and effective context compaction policies.
               I am also broadly interested in efficient AI, particularly edge AI and PEFT methods.
             </p>
-          </header>
+          </section>
 
           {/* ---------- News ---------- */}
           <section id="news" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
