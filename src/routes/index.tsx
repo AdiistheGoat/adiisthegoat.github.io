@@ -11,6 +11,7 @@ import logoSprocket from "@/assets/logo-sprocket.png";
 import logoFrizzle from "@/assets/logo-frizzle.png";
 import logoFreecharge from "@/assets/logo-freecharge.png";
 import logoUwPhysics from "@/assets/logo-uw-physics.png";
+import resume_pdf from "@/assets/Resume.pdf";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,7 +40,7 @@ export const Route = createFileRoute("/")({
 /* ------------------------------------------------------------------ */
 const links = {
   email: "mailto:agoyal33@wisc.edu",
-  cv: "/assets/Resume.pdf",
+  cv: resume_pdf,
   scholar: "https://scholar.google.com/citations?user=OcCyDyEAAAAJ&hl=en",
   github: "https://github.com/AdiistheGoat",
   linkedin: "https://www.linkedin.com/in/aditya-goyal-aa0288213/",
