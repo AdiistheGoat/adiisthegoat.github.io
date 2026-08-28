@@ -18,9 +18,11 @@ export default defineConfig({
   tanstackStart: {
     // Keep the SSR entry wrapper for prerendering; the serverless worker build is disabled.
     server: { entry: "server" },
-    // Prerender the homepage with full content for static hosting.
     prerender: {
       enabled: true,
+      // One-page site. Following <a href> would prerender /Resume.pdf as HTML
+      // (res.text() on a binary file) and overwrite the real PDF.
+      crawlLinks: false,
     },
   },
 });

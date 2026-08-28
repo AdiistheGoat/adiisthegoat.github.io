@@ -11,7 +11,6 @@ import logoSprocket from "@/assets/logo-sprocket.png";
 import logoFrizzle from "@/assets/logo-frizzle.png";
 import logoFreecharge from "@/assets/logo-freecharge.png";
 import logoUwPhysics from "@/assets/logo-uw-physics.png";
-import resume_pdf from "@/assets/Resume.pdf";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,7 +39,7 @@ export const Route = createFileRoute("/")({
 /* ------------------------------------------------------------------ */
 const links = {
   email: "mailto:agoyal33@wisc.edu",
-  cv: resume_pdf,
+  cv: "/Resume.pdf",
   scholar: "https://scholar.google.com/citations?user=OcCyDyEAAAAJ&hl=en",
   github: "https://github.com/AdiistheGoat",
   linkedin: "https://www.linkedin.com/in/aditya-goyal-aa0288213/",
@@ -185,9 +184,9 @@ const teaching = [
 
 /* ------------------------------------------------------------------ */
 
-/** http(s) links open in a new tab. Hash, mailto, and "#" stay on this page. */
+/** Same-page jumps and mailto stay here. Everything else (PDF, http) opens a tab. */
 function newTabProps(href: string) {
-  if (!href.startsWith("http")) return {};
+  if (href.startsWith("#") || href.startsWith("mailto:")) return {};
   return { target: "_blank" as const, rel: "noopener noreferrer" };
 }
 
