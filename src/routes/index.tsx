@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import portraitPhoto from "@/assets/portrait.jpg";
 import scubaTurtle from "@/assets/scuba-7059.jpg";
 import scubaSnake from "@/assets/scuba-7060.jpg";
 import scubaDiver from "@/assets/scuba-7061.jpg";
@@ -34,7 +35,7 @@ export const Route = createFileRoute("/")({
 const links = {
   email: "mailto:agoyal33@wisc.edu",
   cv: "#", // no hosted CV yet
-  scholar: "#", // no Scholar URL on the resume
+  scholar: "https://scholar.google.com/citations?user=OcCyDyEAAAAJ&hl=en",
   github: "https://github.com/AdiistheGoat",
   linkedin: "https://www.linkedin.com/in/aditya-goyal",
 };
@@ -50,11 +51,16 @@ const navItems = [
   { label: "Outside", href: "#outside" },
 ];
 
+// Newest first. Every row is a dated resume fact (roles, paper, projects).
 const news = [
   { date: "May 2026", text: "Joined Frizzle (YC S25) as a Software Engineering Intern." },
   { date: "May 2026", text: "WARP accepted to the ICML 2026 Weight Symmetries Workshop." },
   { date: "Nov 2025", text: "Joined Yin Li's lab to work on NICU mortality forecasting." },
-  { date: "Aug 2025", text: "Finished a Machine Learning internship at Freecharge." },
+  { date: "Jul 2025", text: "Joined Sprocket Lab as an ML Research Engineering Intern." },
+  { date: "May 2025", text: "Joined Freecharge as a Machine Learning Intern." },
+  { date: "Nov 2024", text: "Joined UW–Madison Physics as a Software Engineering Intern." },
+  { date: "Sep 2024", text: "Started as a UG Teaching Assistant for CS 540 and CS 300." },
+  { date: "Sep 2023", text: "Started undergrad at UW–Madison in Computer Science and Data Science." },
 ];
 
 const projects = [
@@ -80,9 +86,9 @@ const publications = [
     thumb: paperThumb,
     links: [
       { label: "Paper", href: "https://arxiv.org/abs/2607.01686" },
-      { label: "Code", href: "#" },
+      { label: "Code", href: "https://github.com/SprocketLab/WARP" },
       { label: "Poster", href: "#" },
-      { label: "Media", href: "#" },
+      { label: "Media", href: "https://x.com/zihengh1/status/2073061184991842327" },
     ],
   },
 ];
@@ -150,11 +156,17 @@ const writing = [
 ];
 
 const teaching = [
-  { course: "CS 300 — Programming II", role: "Teaching Assistant", years: "2024–present" },
-  { course: "CS 540 — Introduction to Artificial Intelligence", role: "Teaching Assistant", years: "2024–25" },
+  { course: "CS 300 — Programming II", role: "UG Teaching Assistant", years: "2024–present" },
+  { course: "CS 540 — Introduction to Artificial Intelligence", role: "UG Teaching Assistant", years: "2024–25" },
 ];
 
 /* ------------------------------------------------------------------ */
+
+/** http(s) links open in a new tab. Hash, mailto, and "#" stay on this page. */
+function newTabProps(href: string) {
+  if (!href.startsWith("http")) return {};
+  return { target: "_blank" as const, rel: "noopener noreferrer" };
+}
 
 function SectionHeading({ children }: { children: string }) {
   return (
@@ -204,16 +216,17 @@ function Index() {
         </ul>
       </nav>
 
-      <div className="lg:grid lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-16">
+        <div className="lg:grid lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-16">
         {/* ---------- Sticky left rail ---------- */}
         <aside className="mb-14 lg:mb-0">
           <div className="lg:sticky lg:top-14">
-            <div
-              className="flex h-36 w-36 items-center justify-center rounded-full border border-border bg-muted font-serif text-4xl text-muted-foreground lg:h-44 lg:w-44 lg:text-5xl"
-              aria-label="Profile photo placeholder"
-            >
-              AG
-            </div>
+            <img
+              src={portraitPhoto}
+              alt="Aditya Goyal"
+              width={1600}
+              height={1200}
+              className="h-48 w-48 rounded-full border border-border object-cover object-[65%_28%] lg:h-64 lg:w-64"
+            />
 
             <h1 className="mt-6 font-serif text-3xl font-medium tracking-tight text-foreground lg:text-4xl">
               Aditya Goyal
@@ -227,10 +240,10 @@ function Index() {
 
             <nav className="mt-6 flex flex-wrap gap-x-4 gap-y-2 font-mono text-sm">
               <a className="u-link" href={links.email}>Email</a>
-              <a className="u-link" href={links.cv}>CV</a>
-              <a className="u-link" href={links.scholar}>Scholar</a>
-              <a className="u-link" href={links.github}>GitHub</a>
-              <a className="u-link" href={links.linkedin}>LinkedIn</a>
+              <a className="u-link" href={links.cv} {...newTabProps(links.cv)}>CV</a>
+              <a className="u-link" href={links.scholar} {...newTabProps(links.scholar)}>Scholar</a>
+              <a className="u-link" href={links.github} {...newTabProps(links.github)}>GitHub</a>
+              <a className="u-link" href={links.linkedin} {...newTabProps(links.linkedin)}>LinkedIn</a>
             </nav>
 
             {/* Section navigation — desktop rail only */}
@@ -274,7 +287,7 @@ function Index() {
           {/* ---------- News ---------- */}
           <section id="news" className="scroll-mt-20 border-t border-border bg-muted/20 py-14">
             <SectionHeading>News</SectionHeading>
-            <ul className="mt-7 space-y-3.5">
+            <ul className="mt-7 max-h-60 space-y-3.5 overflow-y-auto pr-3">
               {news.map((item) => (
                 <li key={item.date + item.text} className="flex gap-5 text-sm leading-relaxed">
                   <span className="w-20 shrink-0 font-mono text-primary/80">{item.date}</span>
@@ -282,9 +295,6 @@ function Index() {
                 </li>
               ))}
             </ul>
-            <a href="#news" className="u-link mt-6 inline-block font-mono text-sm text-muted-foreground">
-              All news →
-            </a>
           </section>
 
           {/* ---------- Projects ---------- */}
@@ -292,20 +302,20 @@ function Index() {
             <SectionHeading>Projects</SectionHeading>
             <ul className="mt-7 grid gap-5 sm:grid-cols-2">
               {projects.map((p) => (
-                <li
-                  key={p.n}
-                  className="group rounded-md border border-border bg-card p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:shadow"
-                >
-                  <div className="flex items-baseline justify-between">
-                    <span className="font-mono text-sm text-primary/80">{p.n}</span>
-                    <span className="font-mono text-sm text-muted-foreground transition-colors group-hover:text-primary">
-                      ↗
-                    </span>
-                  </div>
-                  <p className="mt-3 text-base font-medium text-foreground">{p.title}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-                  <a href={p.href} className="u-link mt-3 inline-block font-mono text-sm">
-                    Code ↗
+                <li key={p.n}>
+                  <a
+                    href={p.href}
+                    className="group block rounded-md border border-border bg-card p-5 shadow-sm no-underline hover:no-underline hover:border-primary hover:shadow"
+                    {...newTabProps(p.href)}
+                  >
+                    <div className="flex items-baseline justify-between">
+                      <span className="font-mono text-sm text-primary/80">{p.n}</span>
+                      <span className="font-mono text-sm text-muted-foreground group-hover:text-primary">
+                        ↗
+                      </span>
+                    </div>
+                    <p className="mt-3 text-base font-medium text-foreground">{p.title}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
                   </a>
                 </li>
               ))}
@@ -341,6 +351,7 @@ function Index() {
                           key={l.label}
                           href={l.href}
                           className="rounded-full border border-border px-3 py-1 font-mono text-xs transition-colors hover:border-primary hover:text-primary"
+                          {...newTabProps(l.href)}
                         >
                           {l.label} ↗
                         </a>
@@ -369,19 +380,27 @@ function Index() {
             <SectionHeading>Writing</SectionHeading>
             <ul className="mt-7 space-y-2">
               {writing.map((w) => (
-                <li key={w.title} className="rounded-md p-3 transition-colors hover:bg-muted/30">
-                  <div className="flex items-baseline justify-between gap-4">
-                    <a href={w.href} className="u-link font-serif text-lg font-medium text-foreground">
-                      {w.title}
-                    </a>
-                    <span className="shrink-0 font-mono text-sm text-muted-foreground">↗</span>
-                  </div>
-                  {w.desc && (
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{w.desc}</p>
-                  )}
-                  {w.meta && (
-                    <p className="mt-1.5 font-mono text-xs text-primary/80">{w.meta}</p>
-                  )}
+                <li key={w.title}>
+                  <a
+                    href={w.href}
+                    className="group block rounded-md p-3 no-underline hover:no-underline hover:bg-muted"
+                    {...newTabProps(w.href)}
+                  >
+                    <div className="flex items-baseline justify-between gap-4">
+                      <span className="font-serif text-lg font-medium text-foreground">
+                        {w.title}
+                      </span>
+                      <span className="shrink-0 font-mono text-sm text-muted-foreground group-hover:text-primary">
+                        ↗
+                      </span>
+                    </div>
+                    {w.desc && (
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{w.desc}</p>
+                    )}
+                    {w.meta && (
+                      <p className="mt-1.5 font-mono text-xs text-primary/80">{w.meta}</p>
+                    )}
+                  </a>
                 </li>
               ))}
             </ul>
