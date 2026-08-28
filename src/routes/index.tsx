@@ -6,6 +6,11 @@ import scubaSnake from "@/assets/scuba-7060.jpg";
 import scubaDiver from "@/assets/scuba-7061.jpg";
 import squashPhoto from "@/assets/squash.jpg";
 import paperThumb from "@/assets/paper-thumb.jpg";
+import logoCs from "@/assets/logo-cs.png";
+import logoSprocket from "@/assets/logo-sprocket.png";
+import logoFrizzle from "@/assets/logo-frizzle.png";
+import logoFreecharge from "@/assets/logo-freecharge.png";
+import logoUwPhysics from "@/assets/logo-uw-physics.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -14,13 +19,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Aditya Goyal — Computer Science and Data Science at the University of Wisconsin–Madison. Researching how machine learning systems learn, reason, and operate efficiently.",
+          "Aditya Goyal — undergraduate at UW–Madison working on Health AI and data-centric AI. Advised by Prof. Yin Li and Prof. Fred Sala.",
       },
       { property: "og:title", content: "Aditya Goyal" },
       {
         property: "og:description",
         content:
-          "Computer Science · Data Science at UW–Madison. Understanding and improving how machine learning systems learn, reason, and operate efficiently.",
+          "Health AI and data-centric AI at UW–Madison. Advised by Prof. Yin Li and Prof. Fred Sala.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -93,13 +98,24 @@ const publications = [
   },
 ];
 
-const researchExperience = [
+// `logo` is optional — omit it and the square shows org initials until you drop in a file.
+type Experience = {
+  org: string;
+  year: string;
+  role: string;
+  desc: string;
+  reflection: string;
+  logo?: string;
+};
+
+const researchExperience: Experience[] = [
   {
     org: "Yin Li Lab",
     year: "2025–present",
     role: "ML Research Engineering Intern",
     desc: "Mortality forecasting on sparse, irregular NICU recordings.",
     reflection: "Sparse clinical data taught me that the missingness is part of the signal.",
+    logo: logoCs, // Downloads: "uw madison comptuer sciens.png" — CS dept mark, no lab-specific file
   },
   {
     org: "Sprocket Lab",
@@ -107,16 +123,18 @@ const researchExperience = [
     role: "ML Research Engineering Intern",
     desc: "Recovering fine-tuning data distributions from model weights.",
     reflection: "The interesting question was usually one level below the one we started with.",
+    logo: logoSprocket,
   },
 ];
 
-const sweExperience = [
+const sweExperience: Experience[] = [
   {
     org: "Frizzle",
     year: "2026",
     role: "Software Engineering Intern",
     desc: "Shipped AI rubric generation and eval pipelines for education.",
     reflection: "A model is only as good as the eval that grades it.",
+    logo: logoFrizzle,
   },
   {
     org: "Freecharge",
@@ -124,6 +142,7 @@ const sweExperience = [
     role: "Machine Learning Intern",
     desc: "Bedrock agents for spend analysis and document search.",
     reflection: "Tool-using agents fail at the retrieval step before they fail at the model.",
+    logo: logoFreecharge,
   },
   {
     org: "UW–Madison Physics",
@@ -131,6 +150,7 @@ const sweExperience = [
     role: "Software Engineering Intern",
     desc: "Trained and visualized MLPs on mathematical functions.",
     reflection: "Vectorizing the experiment loop taught me more than the network did.",
+    logo: logoUwPhysics,
   },
 ];
 
@@ -176,13 +196,43 @@ function SectionHeading({ children }: { children: string }) {
   );
 }
 
-function ExperienceList({ items }: { items: typeof researchExperience }) {
+/** Two- or three-letter mark from the org name, used until a real `logo` file is set. */
+function orgInitials(org: string) {
+  const words = org.split(/\s+/).filter(Boolean);
+  const head = words[0];
+  // "UW–Madison Physics" → UW, not UM (don't treat the dash as a word break).
+  if (/[–—-]/.test(head)) {
+    return head.split(/[–—-]/)[0].slice(0, 3).toUpperCase();
+  }
+  if (words.length === 1) return head.slice(0, 3).toUpperCase();
+  return (head[0] + words[1][0]).toUpperCase();
+}
+
+function OrgLogo({ org, src }: { org: string; src?: string }) {
   return (
-    <div className="relative mt-7 space-y-10 pl-1">
-      <div className="absolute left-[6px] top-2 bottom-2 w-px bg-border" />
+    <div
+      className={`flex h-[52px] w-[52px] shrink-0 items-center justify-center overflow-hidden rounded-md border bg-card ${
+        src ? "border-border" : "border-dashed border-border"
+      }`}
+      aria-hidden
+    >
+      {src ? (
+        <img src={src} alt="" className="h-full w-full object-cover" />
+      ) : (
+        <span className="font-mono text-xs font-medium text-muted-foreground">
+          {orgInitials(org)}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function ExperienceList({ items }: { items: Experience[] }) {
+  return (
+    <div className="mt-7 space-y-10">
       {items.map((e) => (
-        <div key={e.org} className="relative pl-8">
-          <span className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-primary bg-background" />
+        <div key={e.org} className="flex gap-4">
+          <OrgLogo org={e.org} src={e.logo} />
           <div className="min-w-0">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <p className="font-mono text-sm font-medium uppercase tracking-wide text-foreground">
@@ -269,18 +319,17 @@ function Index() {
         <div className="min-w-0">
           {/* ---------- Intro ---------- */}
           <header className="pb-14">
-            <p className="font-serif text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl">
-              I&rsquo;m interested in understanding and improving how machine
-              learning systems learn, reason, and operate efficiently.
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+              Greetings! I am an undergraduate at UW–Madison working on Health AI and
+              data-centric AI. I am fortunate to be advised by Prof. Yin Li and
+              Prof. Fred Sala. I have also gained valuable AI and ML engineering
+              experience through internships at Freecharge, Frizzle, and UW–Madison
+              Department of Physics.
             </p>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground">
-              More broadly, my work spans representation learning, optimization,
-              and evaluation, with applications including healthcare.
-            </p>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Currently, I&rsquo;m a senior at UW–Madison working on NICU
-              mortality forecasting in Yin Li&rsquo;s lab, and building agentic
-              evaluation systems at Frizzle.
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+              My research focus is on deep learning with applications in HealthCare and building effective data curation pipelines. My past work was on weight-space analysis to recover the training data distribution. 
+              Currently, I am working on NICU mortality forecasting using Chronos, video understanding for neonatal laryngoscopy, and effective context compaction policies.
+              I am also broadly interested in efficient AI, particularly edge AI and PEFT methods.
             </p>
           </header>
 
