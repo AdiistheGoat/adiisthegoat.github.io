@@ -113,18 +113,18 @@ type Experience = {
 const researchExperience: Experience[] = [
   {
     org: "Yin Li Lab",
-    year: "2025–present",
+    year: "Dec 2025–present",
     role: "ML Research Engineering Intern",
-    desc: "Mortality forecasting on sparse, irregular NICU recordings.",
-    reflection: "Sparse clinical data taught me that the missingness is part of the signal.",
+    desc: "Mortality forecasting on sparse, irregular NICU recordings and video understanding for neonatal laryngoscopy",
+    reflection: "",
     logo: logoCs, // Downloads: "uw madison comptuer sciens.png" — CS dept mark, no lab-specific file
   },
   {
     org: "Sprocket Lab",
-    year: "2025–26",
+    year: "July 2025–present",
     role: "ML Research Engineering Intern",
-    desc: "Recovering fine-tuning data distributions from model weights.",
-    reflection: "The interesting question was usually one level below the one we started with.",
+    desc: "Researched using gradient signals to recover training data distributions from model parameters, leading to a first-author paper at an ICML 2026 workshop. Currently studying effective context compaction policies for long-context AI agents.",
+    reflection: "",
     logo: logoSprocket,
   },
 ];
@@ -132,26 +132,26 @@ const researchExperience: Experience[] = [
 const sweExperience: Experience[] = [
   {
     org: "Frizzle",
-    year: "2026",
+    year: "June 2026 - September 2026",
     role: "Software Engineering Intern",
-    desc: "Shipped AI rubric generation and eval pipelines for education.",
-    reflection: "A model is only as good as the eval that grades it.",
+    desc: "Worked on agentic workflows and evals for AI-powered math grading at a Y Combinator-backed startup, owning features from workflow design through backend integration and implementation. Shipped three end-to-end grading pipelines: IGCSE rubric generation, scratch-paper grading, and IB paper grading.",
+    reflection: "Build strong evals, develop effective AI workflows that maintain momentum without sacrificing understanding, and deeply understand the problem to make better assumptions and design decisions.",
     logo: logoFrizzle,
   },
   {
     org: "Freecharge",
-    year: "2025",
+    year: "May 2025 - August 2025",
     role: "Machine Learning Intern",
-    desc: "Bedrock agents for spend analysis and document search.",
-    reflection: "Tool-using agents fail at the retrieval step before they fail at the model.",
+    desc: "Built AI agents for financial analytics using AWS Bedrock and LangGraph. Developed a financial search engine over 12,000+ web pages with AWS Kendra, along with YOLOv8-based video analytics for CCTV footage.",
+    reflection: "Think in production instead of local, quantify decisions with metrics and automate wherever possible.",
     logo: logoFreecharge,
   },
   {
     org: "UW–Madison Physics",
-    year: "2024–25",
+    year: "Nov 2024– Feb 25",
     role: "Software Engineering Intern",
-    desc: "Trained and visualized MLPs on mathematical functions.",
-    reflection: "Vectorizing the experiment loop taught me more than the network did.",
+    desc: "Built a framework to train MLPs on mathematical functions and visualize activation flow across layers using PCA",
+    reflection: "Follow strong engineering practices and and communicate the purpose of your work in a way that matches your audience’s technical background.",
     logo: logoUwPhysics,
   },
 ];
