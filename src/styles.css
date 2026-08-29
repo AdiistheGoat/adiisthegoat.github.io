@@ -59,9 +59,10 @@
 
 :root {
   --radius: 0.375rem;
-  /* Warm paper */
-  --background: oklch(0.982 0.003 95);
-  --foreground: oklch(0.21 0.014 262);
+  /* Warm paper — slightly darker than near-white so the sheet reads */
+  --background: oklch(96.5% 0.00782 73.51);
+
+  --foreground: oklch(44.708% 0.05196 321.323);
   /* Cards sit slightly above the page */
   --card: oklch(0.995 0.002 95);
   --card-foreground: oklch(0.21 0.014 262);
